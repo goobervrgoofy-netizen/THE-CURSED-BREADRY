@@ -5,136 +5,24 @@
   <title>The Cursed Bakery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      background: #ffe6c1;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      background: #d2a679;
-      color: #5e3800;
-      padding: 1em 0 0.5em 0;
-      box-shadow: 0 2px 6px #d2a67960;
-    }
-
-    #dough-coins {
-      font-size: 1.4em;
-      margin-top: 0.5em;
-    }
-
-    main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2em;
-      margin: 2em auto;
-      max-width: 1000px;
-    }
-
-    .game-area {
-      flex: 1 1 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .sourdough-click-area {
-      position: relative;
-      display: inline-block;
-      margin: 2em 0;
-      cursor: pointer;
-    }
-
-    .bread-btn {
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-      position: relative;
-      cursor: pointer;
-      border-radius: 24px;
-      box-shadow: 0 4px 14px #5e3800, 0 2px 2px #fffbe6;
-      transition: box-shadow 0.13s, transform 0.11s;
-      display: block;
-      outline: none;
-    }
-    .bread-btn:active {
-      box-shadow: 0 1px 7px #5e3800;
-      transform: scale(0.97);
-    }
-    .bread-btn img {
-      display: block;
-      width: 270px;
-      height: 270px;
-      object-fit: cover;
-      border-radius: 24px;
-      transition: filter 0.2s, transform 0.2s;
-      background: #fff8e1;
-    }
-    .bread-btn.bounce img {
-      animation: bounce 0.4s cubic-bezier(.68,-0.55,.27,1.55);
-    }
-    @keyframes bounce {
-      0%   { transform: scale(1) translateY(0); }
-      30%  { transform: scale(1.1, 0.9) translateY(-10px);}
-      50%  { transform: scale(0.93, 1.09) translateY(-22px);}
-      70%  { transform: scale(1.05, 0.95) translateY(-8px);}
-      100% { transform: scale(1) translateY(0);}
-    }
-
-    .upgrades {
-      flex: 1 1 260px;
-      background: #fffbe6;
-      border-radius: 15px;
-      box-shadow: 0 2px 8px #d2a67930;
-      padding: 1em 2em 2em 2em;
-      text-align: center;
-      min-width: 220px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .upgrades button {
-      display: block;
-      width: 100%;
-      margin: 0.5em 0;
-      padding: 0.8em;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      background: #e9c46a;
-      color: #5e3800;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .upgrades button:disabled {
-      background: #f2e4c2;
-      cursor: not-allowed;
-    }
-
-    .narrative {
-      flex-basis: 100%;
-      max-width: 600px;
-      margin: 2em auto;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 2px 8px #d2a67930;
-      padding: 1.5em 2em;
-    }
-
-    #journal {
-      min-height: 50px;
-      margin-bottom: 1em;
-    }
-
-    #achievements ul {
-      padding-left: 1.2em;
-      margin: 0.5em 0 0 0;
-    }
+    body { background: #ffe6c1; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0;}
+    header { text-align: center; background: #d2a679; color: #5e3800; padding: 1em 0 0.5em 0; box-shadow: 0 2px 6px #d2a67960;}
+    #dough-coins { font-size: 1.4em; margin-top: 0.5em;}
+    main { display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; margin: 2em auto; max-width: 1000px;}
+    .game-area { flex: 1 1 300px; display: flex; flex-direction: column; align-items: center;}
+    .sourdough-click-area { position: relative; display: inline-block; margin: 2em 0; cursor: pointer;}
+    .bread-btn { background: none; border: none; padding: 0; margin: 0; position: relative; cursor: pointer; border-radius: 24px; box-shadow: 0 4px 14px #5e3800, 0 2px 2px #fffbe6; transition: box-shadow 0.13s, transform 0.11s; display: block; outline: none;}
+    .bread-btn:active { box-shadow: 0 1px 7px #5e3800; transform: scale(0.97);}
+    .bread-btn img { display: block; width: 270px; height: 270px; object-fit: cover; border-radius: 24px; transition: filter 0.2s, transform 0.2s; background: #fff8e1;}
+    .bread-btn.bounce img { animation: bounce 0.4s cubic-bezier(.68,-0.55,.27,1.55);}
+    @keyframes bounce {0%{transform:scale(1) translateY(0);}30%{transform:scale(1.1,0.9) translateY(-10px);}50%{transform:scale(0.93,1.09) translateY(-22px);}70%{transform:scale(1.05,0.95) translateY(-8px);}100%{transform:scale(1) translateY(0);}}
+    .upgrades { flex: 1 1 320px; background: #fffbe6; border-radius: 15px; box-shadow: 0 2px 8px #d2a67930; padding: 1em 2em 2em 2em; text-align: center; min-width: 220px; max-height: 80vh; overflow-y: auto;}
+    .upgrades button { display: block; width: 100%; margin: 0.25em 0; padding: 0.6em; font-size: 1em; border: none; border-radius: 8px; background: #e9c46a; color: #5e3800; cursor: pointer; transition: background 0.2s;}
+    .upgrades button:disabled { background: #f2e4c2; cursor: not-allowed;}
+    .narrative { flex-basis: 100%; max-width: 600px; margin: 2em auto; background: #fff; border-radius: 15px; box-shadow: 0 2px 8px #d2a67930; padding: 1.5em 2em;}
+    #journal { min-height: 50px; margin-bottom: 1em;}
+    #achievements ul { padding-left: 1.2em; margin: 0.5em 0 0 0;}
+    .btn-row { display: flex; justify-content: center; gap: 1em; margin-bottom: 1em;}
   </style>
 </head>
 <body>
@@ -153,9 +41,12 @@
     </div>
     <section class="upgrades" id="upgrades-section">
       <h3>Upgrades</h3>
-      <!-- Upgrade buttons will be injected here by JS -->
     </section>
     <section class="narrative">
+      <div class="btn-row">
+        <button id="save-btn">Save Game</button>
+        <button id="reset-btn">Reset Game</button>
+      </div>
       <h3>Bakery Journal</h3>
       <div id="journal">
         <p><em>"A strange bubbling from the dough again today..."</em></p>
@@ -167,6 +58,27 @@
     </section>
   </main>
   <script>
+    // --- Cookie helpers ---
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days*24*60*60*1000));
+      document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + d.toUTCString() + ";path=/";
+    }
+    function getCookie(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for(let i=0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length,c.length));
+      }
+      return null;
+    }
+    function eraseCookie(name) {
+      document.cookie = name+'=; Max-Age=-99999999; path=/';
+    }
+
+    // --- Game state ---
     let coins = 0;
     let coinsPerClick = 1;
     let coinsPerSecond = 0;
@@ -174,49 +86,113 @@
     let achievements = [];
     const boughtUpgrades = {};
 
-    // List of all upgrades (name, cost, effect, narrative, type, amount)
-    const upgrades = [
+    // Bread/baking-themed base names and adjectives
+    const breadBaseNames = [
+      "Sourdough Starter", "Golden Crust", "Baguette Battalion", "Rye Revolution", "Bagel Brigade", "Ciabatta Charm", "Focaccia Force", "Pretzel Power",
+      "Croissant Charm", "Brioche Blessing", "Crumbly Crown", "Yeast Feast", "Dough Dynamo", "Loaf Legion", "Proofing Basket", "Steam Injector",
+      "Baker's Peel", "Breadboard Bonus", "Rolling Pin", "Whisk Wielder", "Oven Spritz", "Magic Yeast", "King's Oven", "Fairy Flour", "Bread Golem",
+      "Spectral Chef", "Hot Stone", "Flour Storm", "Steam Trap", "Crust Crusader", "Crumb Commander", "Dough Hook", "Gluten Guardian"
+    ];
+    const breadAdjectives = [
+      "Legendary", "Enchanted", "Mystic", "Haunted", "Blessed", "Ancient", "Magic", "Celestial", "Golden", "Crusty", "Rising", "Infinite",
+      "Secret", "Charmed", "Shadow", "Molten", "Epic", "Savory", "Sticky", "Powerful", "Fabled", "Supreme", "Eternal", "Unleavened", "Sprouted"
+    ];
+
+    // Generate 1000 themed upgrades
+    const upgrades = [];
+    // Use a few hand-made upgrades for early game
+    upgrades.push(
       {id:"yeast", name:"Magic Yeast Sprinkles", cost:10, type:"click", amount:1, narrative:"A sprinkle of magic yeast... the dough quivers!"},
       {id:"pin", name:"All-Powerful Rolling Pin", cost:50, type:"click", amount:5, narrative:"The All-Powerful Rolling Pin crushes the dough's will!"},
       {id:"gnomes", name:"Team of Baker Gnomes", cost:100, type:"auto", amount:1, narrative:"Tiny baker gnomes emerge and start smacking the dough on your behalf!"},
       {id:"oven", name:"Enchanted Oven", cost:300, type:"mult", amount:2, narrative:"The enchanted oven radiates warmth. All doughs flatten faster!"},
       {id:"apprentice", name:"Ghostly Apprentice", cost:500, type:"click", amount:10, narrative:"A ghostly apprentice appears, helping with every click!"},
       {id:"fairy", name:"Flour Fairy", cost:1000, type:"auto", amount:5, narrative:"The Flour Fairy flutters by, spreading flour and joy!"},
-      {id:"curse", name:"Lift the Curse", cost:5000, type:"mult", amount:3, narrative:"A strange energy lifts from the bakery. All income triples!"},
-      {id:"owl", name:"Nocturnal Oven Owl", cost:7500, type:"auto", amount:10, narrative:"The oven owl keeps watch through the night, flattening dough while you sleep."},
-      {id:"cat", name:"Cat on the Counter", cost:12000, type:"click", amount:25, narrative:"The cat bats at the dough, making it rise and fall in strange ways."},
-      {id:"mill", name:"Haunted Flour Mill", cost:20000, type:"auto", amount:40, narrative:"Ghosts at the mill grind flour with supernatural speed!"},
-      {id:"grandma", name:"Grandma's Blessing", cost:30000, type:"mult", amount:2, narrative:"A spectral grandma appears, doubling your baking skills."},
-      {id:"baker", name:"Master Baker's Spirit", cost:40000, type:"click", amount:100, narrative:"The master baker's spirit guides your hands. Clicks are much mightier!"},
-      {id:"witch", name:"Witch's Cauldron", cost:50000, type:"auto", amount:100, narrative:"A bubbling cauldron auto-flattens dough with magical force."},
-      {id:"chicken", name:"Golden Chicken", cost:65000, type:"auto", amount:250, narrative:"A golden chicken lays eggs that somehow multiply your dough-coins!"},
-      {id:"star", name:"Lucky Star", cost:80000, type:"mult", amount:2, narrative:"A shooting star doubles your entire bakery's output."},
-      {id:"assistant", name:"Spectral Assistant", cost:95000, type:"auto", amount:500, narrative:"A spectral assistant tirelessly flattens dough for you."},
-      {id:"robot", name:"Breadbot 3000", cost:110000, type:"click", amount:500, narrative:"Breadbot 3000 powers up and supercharges your clicks!"},
-      {id:"soul", name:"Soul Contract", cost:130000, type:"mult", amount:2, narrative:"You sign a dubious contract. All your income is doubled, at what cost?"},
-      {id:"pigeon", name:"Messenger Pigeon", cost:150000, type:"auto", amount:1000, narrative:"A fleet of pigeons delivers your dough far and wide, earning more coins!"},
-      {id:"time", name:"Time Loop", cost:180000, type:"mult", amount:2, narrative:"Time itself bends, doubling your production speed!"},
-      {id:"portal", name:"Portal to Bread Dimension", cost:210000, type:"auto", amount:2500, narrative:"Bread pours in from another dimension!"},
-      {id:"midas", name:"Midas Touch", cost:250000, type:"click", amount:2500, narrative:"Everything you touch turns to dough-coins!"},
-      {id:"phoenix", name:"Phoenix Crumbs", cost:300000, type:"auto", amount:5000, narrative:"A phoenix's crumbs fall and instantly bake into coins."},
-      {id:"twin", name:"Evil Twin", cost:370000, type:"click", amount:5000, narrative:"Your evil twin helps you flatten dough, suspiciously well..."},
-      {id:"rune", name:"Rune of Infinite Yeast", cost:450000, type:"mult", amount:3, narrative:"A rune imbues your bakery, tripling all output!"},
-      {id:"crown", name:"Crown of the Flour King", cost:600000, type:"auto", amount:10000, narrative:"The Flour King bestows his crown, blessing your bakery with endless bounty."},
-      {id:"goblin", name:"Goblin Union", cost:800000, type:"auto", amount:20000, narrative:"A goblin union organizes your bakery, production skyrockets!"},
-      {id:"god", name:"The Bread God", cost:1000000, type:"mult", amount:5, narrative:"The Bread God smiles upon you, quintupled output for all eternity."}
-    ];
+      {id:"curse", name:"Lift the Curse", cost:5000, type:"mult", amount:3, narrative:"A strange energy lifts from the bakery. All income triples!"}
+    );
+    // Now, auto-generate up to 1000+ upgrades
+    for(let i=0;i<1000;i++) {
+      let adj = breadAdjectives[i % breadAdjectives.length];
+      let base = breadBaseNames[i % breadBaseNames.length];
+      let type = i % 12 === 0 ? "mult" : (i % 3 === 0 ? "auto" : "click");
+      let amount = type === "mult" ? 2 + (i % 5) : (type === "click" ? Math.floor(1 + i*2.5) : Math.floor(1 + i*1.7));
+      let cost = 7000 + Math.floor(Math.pow(i+8,1.42))*12 + (type==="mult"?i*3000:0);
+      let name = `${adj} ${base}${i>0?` ${i+1}`:""}`;
+      let narrative = `The ${adj.toLowerCase()} ${base.toLowerCase()} empowers your bakery (Upgrade #${i+8})!`;
+      upgrades.push({
+        id: `breadup${i+1}`,
+        name,
+        cost,
+        type,
+        amount,
+        narrative
+      });
+    }
 
+    // DOM references
     const coinCountEl = document.getElementById('coin-count');
     const sourdough = document.getElementById('sourdough');
     const clickBtn = document.getElementById('click-btn');
     const upgradesSection = document.getElementById('upgrades-section');
     const journal = document.getElementById('journal');
     const achList = document.getElementById('ach-list');
+    const saveBtn = document.getElementById('save-btn');
+    const resetBtn = document.getElementById('reset-btn');
 
-    // Render upgrades as actual buttons and keep their state up to date
+    // Save/load
+    function saveGame() {
+      const saveObj = {
+        coins,
+        coinsPerClick,
+        coinsPerSecond,
+        incomeMultiplier,
+        boughtUpgrades,
+        achievements,
+        journal: journal.innerHTML,
+        achList: achList.innerHTML
+      };
+      setCookie('bakerySave', JSON.stringify(saveObj), 180);
+    }
+    function loadGame() {
+      const saveStr = getCookie('bakerySave');
+      if (!saveStr) return;
+      try {
+        const saveObj = JSON.parse(saveStr);
+        coins = saveObj.coins ?? 0;
+        coinsPerClick = saveObj.coinsPerClick ?? 1;
+        coinsPerSecond = saveObj.coinsPerSecond ?? 0;
+        incomeMultiplier = saveObj.incomeMultiplier ?? 1;
+        Object.assign(boughtUpgrades, saveObj.boughtUpgrades ?? {});
+        achievements = saveObj.achievements ?? [];
+        journal.innerHTML = saveObj.journal ?? "";
+        achList.innerHTML = saveObj.achList ?? "";
+      } catch {}
+    }
+    function resetGame() {
+      if (!confirm("Are you sure you want to reset your game? This cannot be undone.")) return;
+      eraseCookie('bakerySave');
+      location.reload();
+    }
+
+    // Upgrades (virtual scrolling)
+    let upgradesPage = 0;
+    const upgradesPerPage = 50;
     function renderUpgrades() {
       upgradesSection.querySelectorAll('button.upgrade-btn').forEach(btn => btn.remove());
-      for (const upgrade of upgrades) {
+      upgradesSection.querySelectorAll('.up-nav').forEach(btn => btn.remove());
+      // Navigation
+      if (upgradesPage > 0) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = "up-nav";
+        prevBtn.textContent = "< Previous";
+        prevBtn.onclick = () => { upgradesPage--; renderUpgrades(); };
+        upgradesSection.appendChild(prevBtn);
+      }
+      // Page upgrades
+      const start = upgradesPage * upgradesPerPage;
+      const end = Math.min(start + upgradesPerPage, upgrades.length);
+      for (let i = start; i < end; i++) {
+        const upgrade = upgrades[i];
         const btn = document.createElement('button');
         btn.className = 'upgrade-btn';
         btn.id = 'upgrade-' + upgrade.id;
@@ -225,15 +201,23 @@
         btn.addEventListener('click', () => buyUpgrade(upgrade));
         upgradesSection.appendChild(btn);
       }
+      if (end < upgrades.length) {
+        const nextBtn = document.createElement('button');
+        nextBtn.className = "up-nav";
+        nextBtn.textContent = "Next >";
+        nextBtn.onclick = () => { upgradesPage++; renderUpgrades(); };
+        upgradesSection.appendChild(nextBtn);
+      }
     }
-
     function updateUpgradeButtons() {
-      for (const upgrade of upgrades) {
+      const start = upgradesPage * upgradesPerPage;
+      const end = Math.min(start + upgradesPerPage, upgrades.length);
+      for (let i = start; i < end; i++) {
+        const upgrade = upgrades[i];
         const btn = document.getElementById('upgrade-' + upgrade.id);
         if (btn) btn.disabled = boughtUpgrades[upgrade.id] || coins < upgrade.cost;
       }
     }
-
     function buyUpgrade(upgrade) {
       if (boughtUpgrades[upgrade.id] || coins < upgrade.cost) return;
       updateCoins(-upgrade.cost);
@@ -242,9 +226,11 @@
       if (upgrade.type === "mult") incomeMultiplier *= upgrade.amount;
       boughtUpgrades[upgrade.id] = true;
       addJournal(`"${upgrade.narrative}"`);
-      renderUpgrades(); // Re-render to refresh the state and buttons
+      renderUpgrades();
+      saveGame();
     }
 
+    // Game logic
     function updateCoins(val) {
       coins += val;
       if (coins < 0) coins = 0;
@@ -252,7 +238,6 @@
       checkAchievements();
       updateUpgradeButtons();
     }
-
     function checkAchievements() {
       if (coins >= 10 && !achievements.includes('First Loaf')) {
         unlockAchievement('First Loaf', 'You flattened your first 10 doughs!');
@@ -271,20 +256,17 @@
         addJournal("\"All dough bows to your divine will.\"");
       }
     }
-
     function unlockAchievement(name, desc) {
       achievements.push(name);
       const li = document.createElement('li');
       li.innerHTML = `<strong>${name}</strong>: ${desc}`;
       achList.appendChild(li);
     }
-
     function addJournal(text) {
       const p = document.createElement('p');
       p.innerHTML = `<em>${text}</em>`;
       journal.appendChild(p);
     }
-
     function flattenDough() {
       updateCoins(coinsPerClick * incomeMultiplier);
       clickBtn.classList.remove('bounce');
@@ -293,6 +275,7 @@
       let hue = Math.min(30 + coins / 8, 70);
       sourdough.style.filter = `hue-rotate(${hue}deg) brightness(1.08)`;
       setTimeout(() => sourdough.style.filter = '', 300);
+      saveGame();
     }
 
     clickBtn.addEventListener('click', (e) => {
@@ -305,14 +288,20 @@
         flattenDough();
       }
     });
+    saveBtn.addEventListener('click', saveGame);
+    resetBtn.addEventListener('click', resetGame);
 
     setInterval(() => {
       if (coinsPerSecond > 0) {
         updateCoins(coinsPerSecond * incomeMultiplier);
+        saveGame();
       }
     }, 1000);
 
+    // On load
+    loadGame();
     renderUpgrades();
+    coinCountEl.textContent = coins;
     setInterval(updateUpgradeButtons, 200);
   </script>
 </body>
